@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="utf-8"?>
+<Report xmlns="http://schemas.microsoft.com/sqlserver/reporting/2008/01/reportdefinition" xmlns:rd="http://schemas.microsoft.com/SQLServer/reporting/reportdesigner">
+  <Body>
+    <Height>2in</Height>
+    <Style />
+  </Body>
+  <Width>6.5in</Width>
+  <Page>
+    <PageHeader>
+      <Height>2.54cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <ReportItems>
+        <Textbox Name="Textbox1">
+          <CanGrow>true</CanGrow>
+          <KeepTogether>true</KeepTogether>
+          <Paragraphs>
+            <Paragraph>
+              <TextRuns>
+                <TextRun>
+                  <Value>Reporte de Clientes           </Value>
+                  <Style>
+                    <FontFamily>Arial Rounded MT Bold</FontFamily>
+                    <FontSize>22pt</FontSize>
+                    <FontWeight>Bold</FontWeight>
+                  </Style>
+                </TextRun>
+              </TextRuns>
+              <Style>
+                <TextAlign>Center</TextAlign>
+              </Style>
+            </Paragraph>
+          </Paragraphs>
+          <rd:DefaultName>Textbox1</rd:DefaultName>
+          <Top>0.55245cm</Top>
+          <Left>3.81564cm</Left>
+          <Height>1.84644cm</Height>
+          <Width>8.42667cm</Width>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+            <PaddingLeft>2pt</PaddingLeft>
+            <PaddingRight>2pt</PaddingRight>
+            <PaddingTop>2pt</PaddingTop>
+            <PaddingBottom>2pt</PaddingBottom>
+          </Style>
+        </Textbox>
+        <Image Name="Image1">
+          <Source>Embedded</Source>
+          <Value>Customer</Value>
+          <Sizing>FitProportional</Sizing>
+          <Top>0.89889cm</Top>
+          <Left>12.67037cm</Left>
+          <Height>1.5cm</Height>
+          <Width>1.5cm</Width>
+          <ZIndex>1</ZIndex>
+          <Style>
+            <Border>
+              <Style>None</Style>
+            </Border>
+          </Style>
+        </Image>
+      </ReportItems>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageHeader>
+    <PageFooter>
+      <Height>2.54cm</Height>
+      <PrintOnFirstPage>true</PrintOnFirstPage>
+      <PrintOnLastPage>true</PrintOnLastPage>
+      <Style>
+        <Border>
+          <Style>None</Style>
+        </Border>
+      </Style>
+    </PageFooter>
+    <PageHeight>29.7cm</PageHeight>
+    <PageWidth>21cm</PageWidth>
+    <LeftMargin>2cm</LeftMargin>
+    <RightMargin>2cm</RightMargin>
+    <TopMargin>2cm</TopMargin>
+    <BottomMargin>2cm</BottomMargin>
+    <ColumnSpacing>0.13cm</ColumnSpacing>
+    <Style />
+  </Page>
+  <AutoRefresh>0</AutoRefresh>
+  <EmbeddedImages>
+    <EmbeddedImage Name="Customer">
+      <MIMEType>image/png</MIMEType>
+      <ImageData>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</ImageData>
+    </EmbeddedImage>
+  </EmbeddedImages>
+  <rd:ReportUnitType>Cm</rd:ReportUnitType>
+  <rd:ReportID>ebcc8b9d-293d-4e9e-a99f-26321eb60f3a</rd:ReportID>
+</Report>

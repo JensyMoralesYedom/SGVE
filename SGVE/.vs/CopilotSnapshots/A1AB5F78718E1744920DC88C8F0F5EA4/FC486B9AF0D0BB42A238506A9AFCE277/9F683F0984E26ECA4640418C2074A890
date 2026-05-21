@@ -1,0 +1,274 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+using CapaNegocio;
+using CapaDatos;
+
+namespace CapaPresentacion
+{
+    public partial class FVender : Form
+    {
+        public FVender()
+        {
+            InitializeComponent();
+        }
+        int indexPro = 1;
+        CNProducto cNProducto = new CNProducto();
+
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        {
+
+        }
+
+
+
+        private void CargarProducto(int idProducto)
+        {
+            string valorparametro = idProducto.ToString();
+            
+            DataTable dt = cNProducto.ObtenerProducto(valorparametro);
+
+            if (dt.Rows.Count == 0)
+            {
+                MessageBox.Show("Producto no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            DataRow row = dt.Rows[0];
+
+            int stockActual = Convert.ToInt32(row["StockUnidades"]);
+            string nombre = row["Nombre"].ToString();
+            decimal precio = Convert.ToDecimal(row["PrecioVenta"]);
+
+            if (stockActual <= 0)
+            {
+                MessageBox.Show("No se pudo agregar el producto a la factura, no hay existencia.",
+                                "No hay stock", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            bool encontrado = false;
+
+            foreach (DataGridViewRow fila in dgDetalle.Rows)
+            {
+                if (fila.IsNewRow) continue;
+
+                if (fila.Cells[0].Value != null &&
+                    Convert.ToInt32(fila.Cells[0].Value) == idProducto)
+                {
+                    int cantidadActual = Convert.ToInt32(fila.Cells[3].Value);
+
+                    if (cantidadActual >= stockActual)
+                    {
+                        MessageBox.Show("No se puede agregar más cantidad, ya alcanzaste el stock disponible.",
+                                        "Stock insuficiente", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                        return;
+                    }
+
+                    cantidadActual++;
+
+                    fila.Cells[3].Value = cantidadActual;
+                    fila.Cells[5].Value = cantidadActual * precio;
+                    fila.Cells[6].Value = stockActual - cantidadActual;
+
+                    encontrado = true;
+                    break;
+                }
+            }
+
+            if (!encontrado)
+            {
+                int cantidadInicial = 1;
+                int stockTemporal = stockActual - cantidadInicial;
+                decimal importe = cantidadInicial * precio;
+
+                dgDetalle.Rows.Add(new object[]
+                {
+                    idProducto,              // 0
+                    indexPro.ToString(),     // 1
+                    nombre,                  // 2
+                    cantidadInicial,         // 3
+                    precio,                  // 4
+                    importe,                 // 5
+                    stockTemporal            // 6
+                });
+
+                indexPro++;
+            }
+        }
+
+        private void tbProducto_KeyDown_1(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                // Abrir el formulario de búsqueda de productos
+                FBuscarProducto buscarProductoForm = new FBuscarProducto();
+                buscarProductoForm.ShowDialog();
+                // Después de cerrar el formulario de búsqueda, puedes obtener el ID del producto seleccionado
+                int idProductoSeleccionado = Program.vidProducto;
+                // Aquí puedes cargar los detalles del producto seleccionado en los campos correspondientes
+
+                CargarProducto(idProductoSeleccionado);
+            }
+        }
+
+        private void btnFacturar_Click(object sender, EventArgs e)
+        {
+            // Validar que hay detalles para facturar
+            if (dgDetalle.Rows.Count == 0 || (dgDetalle.Rows.Count == 1 && dgDetalle.Rows[0].IsNewRow))
+            {
+                MessageBox.Show("Debe agregar al menos un producto a la factura.", "Advertencia", MessageBoxButtons.OK, MessageBoxIcon.Warning);
+                return;
+            }
+
+            // 🔴 1. VALIDAR TODO PRIMERO
+            foreach (DataGridViewRow fila in dgDetalle.Rows)
+            {
+                if (fila.IsNewRow) continue;
+
+                int idProducto = Convert.ToInt32(fila.Cells[0].Value);
+                int cantidad = Convert.ToInt32(fila.Cells[3].Value);
+
+                DataTable dt = cNProducto.ObtenerProducto(idProducto.ToString());
+
+                if (dt.Rows.Count == 0)
+                {
+                    MessageBox.Show("Producto no encontrado en BD");
+                    return;
+                }
+
+                int stockBD = Convert.ToInt32(dt.Rows[0]["StockUnidades"]);
+
+                if (cantidad > stockBD)
+                {
+                    MessageBox.Show("Stock insuficiente al momento de facturar");
+                    return;
+                }
+            }
+
+            // 🟢 2. INSERTAR FACTURA (solo si todo pasó)
+            CDResultado resultado = CNFacturas.Insertar(Program.vidCliente, Program.idUsuarioActual, DateTime.Now, "Activo", "", DateTime.Now);
+
+            // Validar que la factura se insertó correctamente
+            if (!resultado.Exito || resultado.IdResult <= 0)
+            {
+                MessageBox.Show("Error al insertar la factura: " + resultado.Msg, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+            // 🟢 3. INSERTAR DETALLES Y ACTUALIZAR STOCK
+            bool hayErrorEnDetalle = false;
+            string mensajeError = "";
+
+            foreach (DataGridViewRow fila in dgDetalle.Rows)
+            {
+                if (fila.IsNewRow) continue;
+
+                int idProducto = Convert.ToInt32(fila.Cells[0].Value);
+                int cantidad = Convert.ToInt32(fila.Cells[3].Value);
+
+                DataTable dt = cNProducto.ObtenerProducto(idProducto.ToString());
+                DataRow row = dt.Rows[0];
+
+                int stockBD = Convert.ToInt32(row["StockUnidades"]);
+                int nuevoStock = stockBD - cantidad;
+
+                // Actualizar stock
+                CNProducto.Actualizar(
+                    idProducto,
+                    row["Codigo"].ToString(),
+                    row["Nombre"].ToString(),
+                    row["Marca"].ToString(),
+                    row["Descripcion"].ToString(),
+                    Convert.ToDecimal(row["CostoPorUnidad"]),
+                    Convert.ToDecimal(row["MililitrosPorUnidad"]),
+                    Convert.ToDecimal(row["PrecioVenta"]),
+                    Convert.ToInt32(row["IdCategoria"]),
+                    nuevoStock, 
+                    row["Estado"].ToString(),
+                    Convert.ToInt32(row["IdUsuarioRegistro"])
+                );
+
+                // Insertar detalle de factura
+                string resultadoDetalle = CNDetalleFactura.Insertar(
+                    0, // IdDetalle (se autogenera en BD)
+                    resultado.IdResult, // IdFactura
+                    idProducto,
+                    cantidad,
+                    Convert.ToDecimal(row["PrecioVenta"])
+                );
+
+                // Validar resultado del detalle
+                if (resultadoDetalle != "OK")
+                {
+                    hayErrorEnDetalle = true;
+                    mensajeError = "Error al insertar detalle del producto " + row["Nombre"].ToString() + ": " + resultadoDetalle;
+                    break;
+                }
+            }
+
+            // Mostrar resultado
+            if (hayErrorEnDetalle)
+            {
+                MessageBox.Show(mensajeError, "Error en detalle", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+                MessageBox.Show("Factura realizada correctamente", "Éxito", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                // Limpiar el grid después de facturar exitosamente
+                dgDetalle.Rows.Clear();
+                indexPro = 1;
+            }
+        }
+
+        private void tbIdCliente_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void tbIdCliente_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Enter)
+            {
+                FBuscarCliente fBuscarCliente = new FBuscarCliente();
+                fBuscarCliente.ShowDialog();
+
+                DataTable dt = CNCliente.ObtenerCliente(Program.vidCliente.ToString());
+
+                if (dt.Rows.Count <= 0)
+                {
+                    MessageBox.Show("Cliente no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    return;
+                }
+                DataRow row = dt.Rows[0];
+                tbIdCliente.Text = Program.vidCliente.ToString();
+                tbNombreCliente.Text = row["Nombre"].ToString() + " " + row["Apellido"].ToString();
+
+
+
+            }
+        }
+
+        private void FVender_Load(object sender, EventArgs e)
+        {
+            Program.vidCliente = 1;
+            DataTable dt = CNCliente.ObtenerCliente(Program.vidCliente.ToString());
+
+            if (dt.Rows.Count <= 0)
+            {
+                MessageBox.Show("Cliente no encontrado.", "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            DataRow row = dt.Rows[0];
+            tbIdCliente.Text = Program.vidCliente.ToString();
+            tbNombreCliente.Text = row["Nombre"].ToString() + " " + row["Apellido"].ToString();
+        }
+    }
+}

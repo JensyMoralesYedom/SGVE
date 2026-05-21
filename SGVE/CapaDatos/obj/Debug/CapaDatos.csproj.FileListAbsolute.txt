@@ -1,0 +1,16 @@
+C:\Programacion 2\SGVE\CapaDatos\bin\Debug\DBSGVE.mdf
+C:\Programacion 2\SGVE\CapaDatos\bin\Debug\DBSGVE_log.ldf
+C:\Programacion 2\SGVE\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Programacion 2\SGVE\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Programacion 2\SGVE\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+C:\Programacion 2\SGVE\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Programacion 2\SGVE\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Programacion 2\SGVE\CapaDatos\obj\Debug\CapaDatos.pdb
+C:\Programación 2\SGVE\CapaDatos\bin\Debug\DBSGVE.mdf
+C:\Programación 2\SGVE\CapaDatos\bin\Debug\DBSGVE_log.ldf
+C:\Programación 2\SGVE\CapaDatos\bin\Debug\CapaDatos.dll
+C:\Programación 2\SGVE\CapaDatos\bin\Debug\CapaDatos.pdb
+C:\Programación 2\SGVE\CapaDatos\obj\Debug\CapaDatos.csproj.AssemblyReference.cache
+C:\Programación 2\SGVE\CapaDatos\obj\Debug\CapaDatos.csproj.CoreCompileInputs.cache
+C:\Programación 2\SGVE\CapaDatos\obj\Debug\CapaDatos.dll
+C:\Programación 2\SGVE\CapaDatos\obj\Debug\CapaDatos.pdb

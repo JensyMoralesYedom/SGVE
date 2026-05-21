@@ -1,0 +1,89 @@
+﻿using CapaDatos;
+using CapaNegocio;
+using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Data;
+using System.Drawing;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Windows.Forms;
+
+namespace CapaPresentacion
+{
+    public partial class FDashBoard : Form
+    {
+        public FDashBoard()
+        {
+            InitializeComponent();
+        }
+
+
+        private void CargarGraficoVentas()
+        {
+            
+            DataTable dt = CNFacturas.VentasPorDia();
+
+            chartVentas.Series.Clear();
+            chartVentas.Series.Add("Ventas");
+
+            chartVentas.Series["Ventas"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            chartVentas.Series["Ventas"].IsValueShownAsLabel = true;
+
+            chartVentas.ChartAreas[0].AxisX.Title = "Fecha";
+            chartVentas.ChartAreas[0].AxisY.Title = "Total vendido";
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string fecha = Convert.ToDateTime(row["Fecha"]).ToString("dd/MM/yyyy");
+                decimal total = Convert.ToDecimal(row["TotalVentas"]);
+
+                chartVentas.Series["Ventas"].Points.AddXY(fecha, total);
+            }
+        }
+        private void CargarGraficoTopProductos()
+        {
+            DataTable dt = CNFacturas.TopProductosMasVendidos();
+
+            chart1.Series.Clear();
+            chart1.Series.Add("Productos");
+            chart1.Series["Productos"].ChartType = System.Windows.Forms.DataVisualization.Charting.SeriesChartType.Column;
+            chart1.Series["Productos"].IsValueShownAsLabel = true;
+
+            chart1.ChartAreas[0].AxisX.Title = "Producto";
+            chart1.ChartAreas[0].AxisY.Title = "Cantidad vendida";
+
+            foreach (DataRow row in dt.Rows)
+            {
+                string producto = row["Descripcion"].ToString();
+                int cantidad = Convert.ToInt32(row["TotalVendido"]);
+
+                chart1.Series["Productos"].Points.AddXY(producto, cantidad);
+            }
+
+        }
+        private Decimal TotalVentas()
+        {
+            DataTable dt;
+            dt = CNFacturas.VentasPorDia();
+            decimal total =0;
+            foreach (DataRow row in dt.Rows)
+            {
+                total += Convert.ToDecimal(row["TotalVentas"]);
+            }
+
+            return total;
+        }
+
+        private void FDashBoard_Load(object sender, EventArgs e)
+        {
+            CNProducto cNProducto = new CNProducto();
+            lblTotalProductos.Text = cNProducto.ObtenerProducto("").Rows.Count.ToString();
+            lblTotalVentas.Text = TotalVentas().ToString();
+
+            CargarGraficoVentas();
+            CargarGraficoTopProductos();
+        }
+    }
+}

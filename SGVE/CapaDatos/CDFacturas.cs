@@ -1,0 +1,298 @@
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+using System.Data;
+using System.Data.SqlClient;
+
+namespace CapaDatos
+{
+    public class CDFacturas
+    {
+        #region Variables
+        private int idfactura;
+        private int idcliente;           
+        private int idusuariovendedor;
+        private DateTime fechafactura;   
+        private string estado;
+        private string observaciones;
+        private DateTime fecharegistro;  
+        #endregion
+
+        #region Propiedades
+        public int IdFactura
+        {
+            get { return idfactura; }
+            set { idfactura = value; }
+        }
+
+        public int IdCliente
+        {
+            get { return idcliente; }
+            set { idcliente = value; }
+        }
+
+        public int IdUsuarioVendedor
+        {
+            get { return idusuariovendedor; }
+            set { idusuariovendedor = value; }
+        }
+
+
+        public DateTime FechaFactura
+        {
+            get { return fechafactura; }
+            set { fechafactura = value; }
+        }
+
+
+        public string Estado
+        {
+            get { return estado; }
+            set { estado = value; }
+        }
+
+       
+
+        public string Observaciones
+        {
+            get { return observaciones; }
+            set { observaciones = value; }
+        }
+
+        public DateTime FechaRegistro
+        {
+            get { return fecharegistro; }
+            set { fecharegistro = value; }
+        }
+        #endregion
+
+        #region Constructores
+        public CDFacturas()
+        {
+        }
+
+        public CDFacturas(int idfactura, int idcliente, int idusuariovendedor,
+                         DateTime fechafactura, string estado,
+                         string observaciones, DateTime fecharegistro)
+        {
+            this.idfactura = idfactura;
+            this.idcliente = idcliente;
+            this.idusuariovendedor = idusuariovendedor;
+            this.fechafactura = fechafactura;
+            this.estado = estado;
+            this.observaciones = observaciones;
+            this.fecharegistro = fecharegistro;
+        }
+        #endregion
+
+        #region Metodos
+        public CDResultado Insertar(CDFacturas obj)
+        {
+            string respuesta = "";
+            int idfacturaAutogenerado = 0;
+
+            CDResultado resultado = new CDResultado();
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon.ConnectionString = CDDBConexion1.miconexion;
+                SqlCon.Open();
+
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "FacturasInsertar";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlParameter parIdFactura = new SqlParameter();
+                parIdFactura.ParameterName = "@pIdFactura";
+                parIdFactura.SqlDbType = SqlDbType.Int;
+                parIdFactura.Direction = ParameterDirection.Output;
+                SqlCmd.Parameters.Add(parIdFactura);
+
+                SqlCmd.Parameters.AddWithValue("@pIdCliente", obj.IdCliente);
+                SqlCmd.Parameters.AddWithValue("@pIdUsuarioVendedor", obj.IdUsuarioVendedor);
+                SqlCmd.Parameters.AddWithValue("@pFechaFactura", obj.FechaFactura);
+                SqlCmd.Parameters.AddWithValue("@pEstado", obj.Estado);
+                SqlCmd.Parameters.AddWithValue("@pObservaciones", obj.Observaciones);
+                SqlCmd.Parameters.AddWithValue("@pFechaRegistro", obj.FechaRegistro);
+
+                if (SqlCmd.ExecuteNonQuery() == 1)
+                {
+                    respuesta = "OK";
+                    idfacturaAutogenerado = Convert.ToInt32(SqlCmd.Parameters["@pIdFactura"].Value);
+                    resultado.Exito = true;
+                }
+                else
+                {
+                    respuesta = "No se pudo ingresar el registro";
+                    resultado.Exito = false;
+
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                {
+                    SqlCon.Close();
+                }
+            }
+
+            resultado.IdResult = idfacturaAutogenerado;
+            resultado.Msg = respuesta;
+            return resultado;
+        }
+
+        public string Actualizar(CDFacturas obj)
+        {
+            string respuesta = "";
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon.ConnectionString = CDDBConexion1.miconexion;
+                SqlCon.Open();
+
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "FacturasActualizar";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlCmd.Parameters.AddWithValue("@pIdFactura", obj.IdFactura);
+                SqlCmd.Parameters.AddWithValue("@pIdCliente", obj.IdCliente);
+                SqlCmd.Parameters.AddWithValue("@pIdUsuarioVendedor", obj.IdUsuarioVendedor);
+                SqlCmd.Parameters.AddWithValue("@pFechaFactura", obj.FechaFactura);
+                SqlCmd.Parameters.AddWithValue("@pEstado", obj.Estado);
+                SqlCmd.Parameters.AddWithValue("@pObservaciones", obj.Observaciones);
+                SqlCmd.Parameters.AddWithValue("@pFechaRegistro", obj.FechaRegistro);
+
+                if (SqlCmd.ExecuteNonQuery() == 1)
+                {
+                    respuesta = "OK";
+                }
+                else
+                {
+                    respuesta = "No se pudo actualizar el registro";
+                }
+            }
+            catch (Exception ex)
+            {
+                respuesta = ex.Message;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                {
+                    SqlCon.Close();
+                }
+            }
+
+            return respuesta;
+        }
+
+        public DataTable Consultar(string pvalor)
+        {
+            DataTable dt = new DataTable("Facturas");
+            SqlConnection SqlCon = new SqlConnection();
+
+            try
+            {
+                SqlCon.ConnectionString = CDDBConexion1.miconexion;
+                SqlCon.Open();
+
+                SqlCommand SqlCmd = new SqlCommand();
+                SqlCmd.Connection = SqlCon;
+                SqlCmd.CommandText = "FacturasConsultar";
+                SqlCmd.CommandType = CommandType.StoredProcedure;
+
+                SqlCmd.Parameters.AddWithValue("@pvalor", pvalor);
+
+                SqlDataAdapter SqlDat = new SqlDataAdapter(SqlCmd);
+                SqlDat.Fill(dt);
+            }
+            catch (Exception)
+            {
+                dt = null;
+            }
+            finally
+            {
+                if (SqlCon.State == ConnectionState.Open)
+                {
+                    SqlCon.Close();
+                }
+            }
+
+            return dt;
+        }
+
+        public DataTable VentasPorDia()
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection sqlConnection = new SqlConnection();
+
+            try
+            {
+                sqlConnection.ConnectionString = CDDBConexion1.miconexion;
+                sqlConnection.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = sqlConnection;
+                command.CommandText = "VentasPorDia";
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                dataAdapter.Fill(dt);
+            }
+            catch (Exception)
+            {
+                dt = new DataTable();
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+
+            return dt;
+        }
+
+        public DataTable TopProductosMasVendidos()
+        {
+            DataTable dt = new DataTable();
+
+            SqlConnection sqlConnection = new SqlConnection();
+
+            try
+            {
+                sqlConnection.ConnectionString = CDDBConexion1.miconexion;
+                sqlConnection.Open();
+
+                SqlCommand command = new SqlCommand();
+                command.Connection = sqlConnection;
+                command.CommandText = "TopProductosMasVendidos";
+                command.CommandType = CommandType.StoredProcedure;
+
+                SqlDataAdapter dataAdapter = new SqlDataAdapter(command);
+                dataAdapter.Fill(dt);
+            }
+            catch (Exception)
+            {
+                dt = new DataTable();
+            }
+            finally
+            {
+                sqlConnection.Close();
+            }
+
+            return dt;
+        }
+        #endregion
+    }
+}

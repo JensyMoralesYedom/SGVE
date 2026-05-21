@@ -1,0 +1,140 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+using System.Data;
+using System.Data.SqlClient;
+
+namespace CapaDatos
+{
+    public class CDFacturaDetalle
+    {
+        private int dIdDetalle, dIdFactura, dIdProducto, dCantidad;
+        private decimal dPrecioVenta;
+
+        public CDFacturaDetalle()
+        {
+        }
+
+        public CDFacturaDetalle(int pIdDetalle, int pIdFactura, int pIdProducto, int pCantidad, decimal pPrecioVenta)
+        {
+            this.dIdDetalle = pIdDetalle;
+            this.dIdFactura = pIdFactura;
+            this.dIdProducto = pIdProducto;
+            this.dCantidad = pCantidad;
+            this.dPrecioVenta = pPrecioVenta;
+        }
+
+        #region metodos get y set
+        public int IdFacturaDetalle
+        {
+            get { return dIdDetalle; }
+            set { dIdDetalle = value; }
+        }
+        public int IdFactura
+        {
+            get { return dIdFactura; }
+            set { dIdFactura = value; }
+        }
+        public int IdProducto
+        {
+            get { return dIdProducto; }
+            set { dIdProducto = value; }
+        }
+        public int Cantidad
+        {
+            get { return dCantidad; }
+            set { dCantidad = value; }
+        }
+        public decimal PrecioVenta
+        {
+            get { return dPrecioVenta; }
+            set { dPrecioVenta = value; }
+        }
+        #endregion
+
+        public string Insertar(CDFacturaDetalle objDetalleFactura)
+        {
+            string mensaje = "";
+            SqlConnection sqlCon = new SqlConnection();
+
+            try
+            {
+                sqlCon.ConnectionString = CDDBConexion1.miconexion;
+                SqlCommand micomando = new SqlCommand("DetalleFacturaInsertar", sqlCon);
+                sqlCon.Open();
+                micomando.CommandType = CommandType.StoredProcedure;
+                micomando.Parameters.AddWithValue("@pIdFactura", objDetalleFactura.IdFactura);
+                micomando.Parameters.AddWithValue("@pIdProducto", objDetalleFactura.IdProducto);
+                micomando.Parameters.AddWithValue("@pCantidad", objDetalleFactura.Cantidad);
+                micomando.Parameters.AddWithValue("@pPrecio", objDetalleFactura.PrecioVenta);
+
+                int filas = micomando.ExecuteNonQuery();
+                mensaje = filas >= 0 ? "OK" : "No se pudo insertar el registro";
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
+            }
+            return mensaje;
+        }
+
+        public string Actualizar(CDFacturaDetalle objDetalleFactura)
+        {
+            string mensaje = "";
+            SqlConnection sqlCon = new SqlConnection();
+            try
+            {
+                sqlCon.ConnectionString = CDDBConexion1.miconexion;
+                SqlCommand micomando = new SqlCommand("DetalleFacturaActualizar", sqlCon);
+                sqlCon.Open();
+                micomando.CommandType = CommandType.StoredProcedure;
+                micomando.Parameters.AddWithValue("@pIdDetalle", objDetalleFactura.IdFacturaDetalle);
+                micomando.Parameters.AddWithValue("@pIdFactura", objDetalleFactura.IdFactura);
+                micomando.Parameters.AddWithValue("@pIdProducto", objDetalleFactura.IdProducto);
+                micomando.Parameters.AddWithValue("@pCantidad", objDetalleFactura.Cantidad);
+                micomando.Parameters.AddWithValue("@pPrecio", objDetalleFactura.PrecioVenta);
+
+                int filas = micomando.ExecuteNonQuery();
+                mensaje = filas >= 0 ? "OK" : "No se pudo actualizar el registro";
+            }
+            catch (Exception ex)
+            {
+                mensaje = ex.Message;
+            }
+            finally
+            {
+                if (sqlCon.State == ConnectionState.Open) sqlCon.Close();
+            }
+            return mensaje;
+        }
+
+        public DataTable DetalleFacturaConsultar(string miparametro)
+        {
+            DataTable dt = new DataTable();
+            SqlDataReader leerDatos;
+            try
+            {
+                SqlCommand sqlcomando = new SqlCommand();
+                sqlcomando.Connection = new SqlConnection(CDDBConexion1.miconexion);
+                sqlcomando.Connection.Open();
+                sqlcomando.CommandText = "DetalleFacturaConsultar";
+                sqlcomando.CommandType = CommandType.StoredProcedure;
+                sqlcomando.Parameters.AddWithValue("@pvalor", miparametro);
+                leerDatos = sqlcomando.ExecuteReader();
+                dt.Load(leerDatos);
+                sqlcomando.Connection.Close();
+            }
+            catch (Exception)
+            {
+                dt = null;
+            }
+            return dt;
+        }
+    }
+}
