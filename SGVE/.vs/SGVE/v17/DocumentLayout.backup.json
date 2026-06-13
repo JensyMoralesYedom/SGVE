@@ -74,7 +74,8 @@
               "RelativeToolTip": "CapaPresentacion\\FConsultaCliente.cs",
               "ViewState": "AgIAAB4AAAAAAAAAAAAiwCYAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T22:31:19.916Z"
+              "WhenOpened": "2026-04-13T22:31:19.916Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -85,7 +86,8 @@
               "ToolTip": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FConsultaCliente.cs [Dise\u00F1o]",
               "RelativeToolTip": "CapaPresentacion\\FConsultaCliente.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T22:31:16.721Z"
+              "WhenOpened": "2026-04-13T22:31:16.721Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
@@ -97,7 +99,8 @@
               "RelativeToolTip": "CapaPresentacion\\FMantCategoria.cs",
               "ViewState": "AgIAAG0AAAAAAAAAAADwv18AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T22:27:55.116Z"
+              "WhenOpened": "2026-04-13T22:27:55.116Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -108,7 +111,8 @@
               "ToolTip": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FMantCategoria.cs [Dise\u00F1o]",
               "RelativeToolTip": "CapaPresentacion\\FMantCategoria.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T22:27:53.15Z"
+              "WhenOpened": "2026-04-13T22:27:53.15Z",
+              "EditorCaption": " [Dise\u00F1o]"
             },
             {
               "$type": "Document",
@@ -120,7 +124,8 @@
               "RelativeToolTip": "CapaPresentacion\\FLogin.cs",
               "ViewState": "AgIAAI8AAAAAAAAAAAAmwJQAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T22:22:01.865Z"
+              "WhenOpened": "2026-04-13T22:22:01.865Z",
+              "EditorCaption": ""
             },
             {
               "$type": "Document",
@@ -131,7 +136,8 @@
               "ToolTip": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FLogin.cs [Dise\u00F1o]",
               "RelativeToolTip": "CapaPresentacion\\FLogin.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-04-13T22:21:59.674Z"
+              "WhenOpened": "2026-04-13T22:21:59.674Z",
+              "EditorCaption": " [Dise\u00F1o]"
             }
           ]
         }

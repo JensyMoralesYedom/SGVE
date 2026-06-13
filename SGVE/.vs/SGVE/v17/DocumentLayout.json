@@ -1,33 +1,29 @@
 {
   "Version": 1,
-  "WorkspaceRootPath": "C:\\Programaci\u00F3n 2\\SGVE\\",
+  "WorkspaceRootPath": "C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|c:\\programaci\u00F3n 2\\sgve\\capapresentacion\\reportecliente.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}",
-      "RelativeMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|solutionrelative:capapresentacion\\reportecliente.rdlc||{46F6D2A1-5E86-4080-A799-01F3D0E23796}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|C:\\Programaci\u00F3n 2\\SGVE\\capapresentacion\\fconsultacliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\capapresentacion\\fconsultacliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|solutionrelative:capapresentacion\\fconsultacliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|C:\\Programaci\u00F3n 2\\SGVE\\capapresentacion\\fconsultacliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\capapresentacion\\fconsultacliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|solutionrelative:capapresentacion\\fconsultacliente.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|C:\\Programaci\u00F3n 2\\SGVE\\capapresentacion\\fmantcategoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\capapresentacion\\fmantcategoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|solutionrelative:capapresentacion\\fmantcategoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|C:\\Programaci\u00F3n 2\\SGVE\\capapresentacion\\fmantcategoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\capapresentacion\\fmantcategoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|solutionrelative:capapresentacion\\fmantcategoria.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|C:\\Programaci\u00F3n 2\\SGVE\\capapresentacion\\flogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "AbsoluteMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\capapresentacion\\flogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|solutionrelative:capapresentacion\\flogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|C:\\Programaci\u00F3n 2\\SGVE\\capapresentacion\\flogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
+      "AbsoluteMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\capapresentacion\\flogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form",
       "RelativeMoniker": "D:0:0:{866499AE-4B09-489B-96F2-EC07CD171B5B}|CapaPresentacion\\CapaPresentacion.csproj|solutionrelative:capapresentacion\\flogin.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}|Form"
     }
   ],
@@ -55,35 +51,23 @@
             {
               "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "ReporteCliente.rdlc [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\ReporteCliente.rdlc",
-              "RelativeDocumentMoniker": "CapaPresentacion\\ReporteCliente.rdlc",
-              "ToolTip": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\ReporteCliente.rdlc [Dise\u00F1o]",
-              "RelativeToolTip": "CapaPresentacion\\ReporteCliente.rdlc [Dise\u00F1o]",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001755|",
-              "WhenOpened": "2026-04-13T22:34:54.84Z",
-              "EditorCaption": " [Dise\u00F1o]"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
               "Title": "FConsultaCliente.cs",
-              "DocumentMoniker": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FConsultaCliente.cs",
+              "DocumentMoniker": "C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\CapaPresentacion\\FConsultaCliente.cs",
               "RelativeDocumentMoniker": "CapaPresentacion\\FConsultaCliente.cs",
-              "ToolTip": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FConsultaCliente.cs",
+              "ToolTip": "C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\CapaPresentacion\\FConsultaCliente.cs",
               "RelativeToolTip": "CapaPresentacion\\FConsultaCliente.cs",
-              "ViewState": "AgIAAB4AAAAAAAAAAAAiwCYAAAAVAAAAAAAAAA==",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAIwCYAAAAVAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-13T22:31:19.916Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "FConsultaCliente.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FConsultaCliente.cs",
+              "DocumentMoniker": "C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\CapaPresentacion\\FConsultaCliente.cs",
               "RelativeDocumentMoniker": "CapaPresentacion\\FConsultaCliente.cs",
-              "ToolTip": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FConsultaCliente.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\CapaPresentacion\\FConsultaCliente.cs [Dise\u00F1o]",
               "RelativeToolTip": "CapaPresentacion\\FConsultaCliente.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-13T22:31:16.721Z",
@@ -91,11 +75,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 2,
               "Title": "FMantCategoria.cs",
-              "DocumentMoniker": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FMantCategoria.cs",
+              "DocumentMoniker": "C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\CapaPresentacion\\FMantCategoria.cs",
               "RelativeDocumentMoniker": "CapaPresentacion\\FMantCategoria.cs",
-              "ToolTip": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FMantCategoria.cs",
+              "ToolTip": "C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\CapaPresentacion\\FMantCategoria.cs",
               "RelativeToolTip": "CapaPresentacion\\FMantCategoria.cs",
               "ViewState": "AgIAAG0AAAAAAAAAAADwv18AAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -104,11 +88,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "FMantCategoria.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FMantCategoria.cs",
+              "DocumentMoniker": "C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\CapaPresentacion\\FMantCategoria.cs",
               "RelativeDocumentMoniker": "CapaPresentacion\\FMantCategoria.cs",
-              "ToolTip": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FMantCategoria.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\CapaPresentacion\\FMantCategoria.cs [Dise\u00F1o]",
               "RelativeToolTip": "CapaPresentacion\\FMantCategoria.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-13T22:27:53.15Z",
@@ -116,11 +100,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 5,
+              "DocumentIndex": 4,
               "Title": "FLogin.cs",
-              "DocumentMoniker": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FLogin.cs",
+              "DocumentMoniker": "C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\CapaPresentacion\\FLogin.cs",
               "RelativeDocumentMoniker": "CapaPresentacion\\FLogin.cs",
-              "ToolTip": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FLogin.cs",
+              "ToolTip": "C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\CapaPresentacion\\FLogin.cs",
               "RelativeToolTip": "CapaPresentacion\\FLogin.cs",
               "ViewState": "AgIAAI8AAAAAAAAAAAAmwJQAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
@@ -129,11 +113,11 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 6,
+              "DocumentIndex": 5,
               "Title": "FLogin.cs [Dise\u00F1o]",
-              "DocumentMoniker": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FLogin.cs",
+              "DocumentMoniker": "C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\CapaPresentacion\\FLogin.cs",
               "RelativeDocumentMoniker": "CapaPresentacion\\FLogin.cs",
-              "ToolTip": "C:\\Programaci\u00F3n 2\\SGVE\\CapaPresentacion\\FLogin.cs [Dise\u00F1o]",
+              "ToolTip": "C:\\Users\\Silenia_Leocadio\\SGVE\\SGVE\\CapaPresentacion\\FLogin.cs [Dise\u00F1o]",
               "RelativeToolTip": "CapaPresentacion\\FLogin.cs [Dise\u00F1o]",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2026-04-13T22:21:59.674Z",
